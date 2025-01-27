@@ -1,11 +1,11 @@
 import React from "react";
 
-const SignUp = () => {
+const MoviePage = () => {
   return (
     <div>
-      <h2 className="text-orange-600">Login</h2>
+      <h2 className="text-orange-600">Movie</h2>
     </div>
   );
 };
 
-export default SignUp;
+export default MoviePage;
