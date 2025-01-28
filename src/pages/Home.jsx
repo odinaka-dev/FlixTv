@@ -1,10 +1,14 @@
 import React from "react";
 
 const HomePage = () => {
+  return <section className=""></section>;
+};
+
+const HomeBanner = () => {
   return (
-    <div>
-      <h2 className="text-orange-600">Login</h2>
-    </div>
+    <section className="home_banner">
+      <h1 className=""></h1>
+    </section>
   );
 };
 
