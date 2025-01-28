@@ -1,5 +1,6 @@
 import React from "react";
 import Recently from "../Components/Recently";
+import Trending from "../Components/Trending";
 
 // the icons from react icons
 import { FaCirclePlay } from "react-icons/fa6";
@@ -12,6 +13,7 @@ const HomePage = () => {
     <section className="">
       <HomeBanner />
       <Recently />
+      <Trending />
     </section>
   );
 };

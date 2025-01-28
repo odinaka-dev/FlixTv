@@ -3,7 +3,7 @@ import Logo from "../assets/fast-forward-circle-svgrepo-com.svg";
 
 const Header = () => {
   return (
-    <header className="binge_header sticky w-full z-100">
+    <header className="binge_header fixed w-full z-100">
       <nav className="grid grid-cols-3 p-6 items-center">
         <div>
           <LogoImage />
