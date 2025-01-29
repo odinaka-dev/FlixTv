@@ -66,7 +66,7 @@ const MainComponent = () => {
 
 const FooterCard = () => {
   return (
-    <section className="footer_banner relative bottom-20 p-16 px-16 rounded-xl shadow-xl">
+    <section className="footer_banner relative bottom-6 p-16 px-16 rounded-xl shadow-xl">
       <div className="information">
         <h1 className="recently_header capitalize text-white text-3xl">
           Watch BingeBox today it's Amazing
@@ -81,7 +81,7 @@ const FooterCard = () => {
           </button>
           <button className="bg-blue-900 p-2 px-8 rounded-[50px] cursor-pointer flex gap-2 items-center">
             <CiLink className="text-[18px]" />
-            Latest Movies
+            Contact Us
           </button>
         </div>
       </div>

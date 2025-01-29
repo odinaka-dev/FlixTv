@@ -6,7 +6,7 @@ import { FaArrowRight, FaStar } from "react-icons/fa6";
 
 const TrendingVideos = () => {
   return (
-    <section className="max-w-[90%] mx-auto text-white mb-16">
+    <section className="max-w-[90%] mx-auto text-white">
       <HandleTrendFetchRequest />
     </section>
   );
@@ -35,7 +35,7 @@ const HandleTrendFetchRequest = () => {
         const data = await response.json();
         // console.log(data);
         if (data.results) {
-          setTrending(data.results.slice(6, 20));
+          setTrending(data.results.slice(6, 14));
         } else {
           setTrending([]);
         }
@@ -77,17 +77,17 @@ const HandleTrendFetchRequest = () => {
   }, []);
 
   return (
-    <section className="py-8">
+    <section className="py-8 pb-2">
       <div className="recently_header flex items-center justify-between">
-        <h1 className="recently_header text-[18px]">
-          Trending Videos on BingeBox
+        <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
+          Thrilling Movies on BingeBox
         </h1>
         <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
           <button className="text-[14px]">View all</button>
           <FaArrowRight />
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-8 my-8">
+      <div className="grid grid-cols-4 gap-8 my-8">
         {Trend.map((result) => (
           <div className="" key={result.id}>
             <div className="movie_images full">
@@ -100,7 +100,7 @@ const HandleTrendFetchRequest = () => {
               </Link>
             </div>
             <div className="movies_information flex flex-col items-center justify-between my-4">
-              <h2 className="text-[18px] font-normal recently_header">
+              <h2 className="text-[15px] hover:text-red-600 cursor-pointer duration-300 font-normal recently_header">
                 {result.title}
               </h2>
               <div className="flex flex-wrap gap-2">
@@ -120,10 +120,10 @@ const HandleTrendFetchRequest = () => {
                 })}
               </div>
               <div className="movie_ratings flex gap-2 items-center">
-                <p className="text-white">{`${Math.floor(
-                  result.vote_average
-                )}.0`}</p>
-                <FaStar className="text-white text-[12px]" />
+                <p className="text-white">
+                  Rating: {`${Math.floor(result.vote_average)}.0`}
+                </p>
+                <FaStar className="text-yellow-500 text-[12px]" />
               </div>
             </div>
           </div>

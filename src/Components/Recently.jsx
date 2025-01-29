@@ -74,7 +74,7 @@ const MainContents = () => {
     <section className="">
       <div className="">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] inline-block pb-2">
-          Recently Updated Movies
+          Most watched Movies on Bingebox
         </h1>
         <section className="grid grid-cols-4 gap-8 items-center my-4">
           {recently.map((results) => (
@@ -111,12 +111,6 @@ const MainContents = () => {
       </div>
     </section>
   );
-};
-
-const SeasonMovies = () => {
-  const [season, setSeason] = useState([]);
-
-  // handling the fetch reqest for the trending season movies
 };
 
 export default Recently;
