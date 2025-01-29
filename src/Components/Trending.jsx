@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+// the icons for the rating
+import { FaStar } from "react-icons/fa";
 
 const TrendingVideos = () => {
   return (
@@ -10,6 +12,7 @@ const TrendingVideos = () => {
 
 const HandleTrendFetchRequest = () => {
   const [Trend, setTrending] = useState([]);
+  const [Genre, setGenre] = useState([]);
 
   // handling the fetch requqest for the trending videos
 
@@ -17,19 +20,20 @@ const HandleTrendFetchRequest = () => {
     const TrendingFetch = async () => {
       try {
         const response = await fetch(
-          "https://imdb-top-1000-movies-series.p.rapidapi.com/list/1",
+          "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc",
           {
             method: "GET",
             headers: {
-              "x-rapidapi-key":
-                "ca4e5a7da6msh8a5e5084e012ffcp1569b0jsn0b6853e5957a",
-              "x-rapidapi-host": "imdb-top-1000-movies-series.p.rapidapi.com",
+              accept: "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZGNhYjU0ZTJhZTQzMjRjMGVlNWI3MzcyZThmNTE3OSIsIm5iZiI6MTczODE0MjM1Mi43NDU5OTk4LCJzdWIiOiI2Nzk5ZjI5MGZjMTRkMjRlMzVhOTc4NmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.00uKCmUSpcpmyiZIcPTGOyiETNVK8FYAfqgwk494yJg",
             },
           }
         );
         const data = await response.json();
-        if (data.result) {
-          setTrending(data.result.slice(5, 30));
+        // console.log(data);
+        if (data.results) {
+          setTrending(data.results.slice(5, 13));
         } else {
           setTrending([]);
         }
@@ -41,6 +45,35 @@ const HandleTrendFetchRequest = () => {
     TrendingFetch();
   }, []);
 
+  // fetch for the Genre
+  useEffect(() => {
+    const fetchGenre = async () => {
+      try {
+        const response = await fetch(
+          "https://api.themoviedb.org/3/genre/movie/list?language=en",
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZGNhYjU0ZTJhZTQzMjRjMGVlNWI3MzcyZThmNTE3OSIsIm5iZiI6MTczODE0MjM1Mi43NDU5OTk4LCJzdWIiOiI2Nzk5ZjI5MGZjMTRkMjRlMzVhOTc4NmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.00uKCmUSpcpmyiZIcPTGOyiETNVK8FYAfqgwk494yJg",
+            },
+          }
+        );
+        const data = await response.json();
+        if (data.genres) {
+          setGenre(data.genres);
+        } else {
+          setGenre([]);
+        }
+      } catch (error) {
+        console.error("error handling the genre for trending videos:", error);
+      }
+    };
+
+    fetchGenre();
+  }, []);
+
   return (
     <section className="py-8">
       <div className="recently_header">
@@ -48,11 +81,42 @@ const HandleTrendFetchRequest = () => {
           Trending Videos on BingeBox
         </h1>
       </div>
-      <div className="grid grid-cols-8 gap-8">
+      <div className="grid grid-cols-4 gap-8 my-8">
         {Trend.map((result) => (
-          <div className="" key={result.rank}>
-            <div className="imag">
-              <img src={result.Poster_Link} className="" alt="" />
+          <div className="" key={result.id}>
+            <div className="movie_images full">
+              <img
+                className="rounded-lg"
+                src={`https://image.tmdb.org/t/p/w500${result.poster_path}`}
+                alt=""
+              />
+            </div>
+            <div className="movies_information flex flex-col items-center justify-between my-4">
+              <h2 className="text-[18px] font-normal recently_header">
+                {result.title}
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {result.genre_ids.slice(0, 3).map((genreId) => {
+                  // Find the genre name for this genreId
+                  const matchingGenre = Genre.find((g) => g.id === genreId);
+                  return (
+                    matchingGenre && (
+                      <span
+                        className="cursor-pointer bg-white text-black font-bold p-2 py-2 text-center rounded-[50px] my-2 cursor-pointer text-[12px]"
+                        key={genreId}
+                      >
+                        {matchingGenre.name}
+                      </span>
+                    )
+                  );
+                })}
+              </div>
+              <div className="movie_ratings flex gap-2 items-center">
+                <p className="text-white">{`${Math.floor(
+                  result.vote_average
+                )}.0`}</p>
+                <FaStar className="text-white text-[12px]" />
+              </div>
             </div>
           </div>
         ))}

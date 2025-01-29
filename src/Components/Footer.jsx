@@ -1,10 +1,31 @@
 import React from "react";
 
-const Login = () => {
+const FooterComponent = () => {
   return (
-    <div>
-      <h2 className="text-white">Footer</h2>
-    </div>
+    <footer className="text-white">
+      <FooterCard />
+      <MainComponent />
+    </footer>
   );
 };
-export default Login;
+
+const MainComponent = () => {
+  return (
+    <section className="footer_component">
+      <div className="footer_information"></div>
+    </section>
+  );
+};
+
+const FooterCard = () => {
+  return (
+    <section className="footer_banner">
+      <div className="information">
+        <h1 className="recently_header text-white">
+          Watch and get amazing information from BingeBox
+        </h1>
+      </div>
+    </section>
+  );
+};
+export default FooterComponent;
