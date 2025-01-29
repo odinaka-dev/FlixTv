@@ -1,9 +1,8 @@
 import React from "react";
-import Logo from "../assets/fast-forward-circle-svgrepo-com.svg";
-
+import LogoImage from "./Logo";
 const Header = () => {
   return (
-    <header className="binge_header fixed w-full z-100">
+    <header className="binge_header fixed w-full z-[100]">
       <nav className="grid grid-cols-3 p-6 items-center">
         <div>
           <LogoImage />
@@ -23,16 +22,16 @@ const Header = () => {
   );
 };
 
-const LogoImage = () => {
-  return (
-    <section className="cursor-pointer">
-      <div className="logo text-white flex gap-2">
-        <img className="w-[8%] cursor-pointer" src={Logo} alt="logo-img" />
-        <p className="font-bold text-[28px]">BingeBox</p>
-      </div>
-    </section>
-  );
-};
+// const LogoImage = () => {
+//   return (
+//     <section className="cursor-pointer">
+//       <div className="logo text-white flex gap-2">
+//         <img className="w-[8%] cursor-pointer" src={Logo} alt="logo-img" />
+//         <p className="font-bold text-[28px]">BingeBox</p>
+//       </div>
+//     </section>
+//   );
+// };
 
 const HeaderList = () => {
   return (

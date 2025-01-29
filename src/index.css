@@ -33,4 +33,17 @@ a {
 .recently_header {
   font-family: var(--family-1);
 }
+
+/* Footer styles */
+.footer_banner {
+  background-image: linear-gradient(
+      to left,
+      rgba(34, 142, 236, 0.7),
+      rgb(27, 0, 162)
+    ),
+    url("./assets/Rectangle.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
 /* the About intro section */

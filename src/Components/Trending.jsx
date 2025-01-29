@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 
 const TrendingVideos = () => {
   return (
-    <section className="max-w-[90%] mx-auto text-white">
+    <section className="max-w-[90%] mx-auto text-white mb-16">
       <HandleTrendFetchRequest />
     </section>
   );
