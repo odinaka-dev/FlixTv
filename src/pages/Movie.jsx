@@ -8,4 +8,6 @@ const MoviePage = () => {
   );
 };
 
+// creating the functionality for the filter
+
 export default MoviePage;

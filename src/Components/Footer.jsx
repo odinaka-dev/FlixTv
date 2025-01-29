@@ -81,7 +81,7 @@ const FooterCard = () => {
           </button>
           <button className="bg-blue-900 p-2 px-8 rounded-[50px] cursor-pointer flex gap-2 items-center">
             <CiLink className="text-[18px]" />
-            Contact Us
+            Search Your Favorite movies
           </button>
         </div>
       </div>

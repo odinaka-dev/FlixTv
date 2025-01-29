@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaArrowRight } from "react-icons/fa6";
 
 const OtherMovies = () => {
   return (
@@ -44,15 +45,19 @@ const OtherMoviesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header">
-        <h1 className="border-b-[2px] border-b-[blue] inline-block pb-4">
-          Newly Release Series BingeBox
+      <div className="recently_header flex items-center justify-between">
+        <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
+          Newly Released Series on BingeBox
         </h1>
+        <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
+          <button className="text-[14px]">View all</button>
+          <FaArrowRight />
+        </div>
       </div>
       <div className="series_movies grid grid-cols-5 gap-8 my-10">
         {series.map((results) => (
-          <div className="" key={results.id}>
-            <div className="image_poster w-[80%]">
+          <div className="relative w-[90%]" key={results.id}>
+            <div className="image_poster">
               <img
                 className="rounded-lg"
                 src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
@@ -60,10 +65,11 @@ const OtherMoviesComponents = () => {
               />
             </div>
             <div className="series_info flex flex-col gap-2">
-              <p className="">{results.name}</p>
-              <p className="text-sm">Series</p>
-              <p className="text-[10px] bg-blue-900 cursor-pointer inline-block p-2 rounded-lg">
-                Aired: {results.first_air_date}
+              <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
+                {results.name}
+              </p>
+              <p className="absolute top-0 text-[10px] bg-blue-900 cursor-pointer inline-block p-2 rounded-lg">
+                {results.first_air_date}
               </p>
             </div>
           </div>
@@ -108,15 +114,19 @@ const OtherSeriesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header">
-        <h1 className="border-b-[2px] border-b-[blue] inline-block pb-4">
-          Top Rated Movies BingeBox
+      <div className="recently_header flex items-center justify-between">
+        <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
+          Top Rated Movies on BingeBox
         </h1>
+        <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
+          <button className="text-[14px]">View all</button>
+          <FaArrowRight />
+        </div>
       </div>
       <div className="series_movies grid grid-cols-5 gap-8 my-10">
         {Top.map((results) => (
-          <div className="relative" key={results.id}>
-            <div className="image_poster w-[80%]">
+          <div className="relative w-[90%]" key={results.id}>
+            <div className="image_poster">
               <img
                 className="rounded-lg"
                 src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
@@ -124,12 +134,11 @@ const OtherSeriesComponents = () => {
               />
             </div>
             <div className="series_info flex flex-col gap-2">
-              <p className="relative bottom-6 text-[10px] text-white py-4 px-2 bg-blue-900 font-bold">
+              <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
                 {results.title}
               </p>
-              <p className="text-sm">Series</p>
               <p className="absolute top-0 text-[10px] bg-blue-900 cursor-pointer inline-block p-2 rounded-lg">
-                Aired: {results.release_date}
+                {results.release_date}
               </p>
             </div>
           </div>
