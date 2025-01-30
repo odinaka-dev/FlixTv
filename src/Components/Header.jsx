@@ -3,30 +3,22 @@ import LogoImage from "./Logo";
 // import { searchContext } from "../contexts/Search";
 
 const Header = () => {
-  // Using react context
-  // const { setSearchQuery } = useContext(searchContext);
-
-  const handleQuery = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   return (
     <header className="binge_header fixed w-full z-[100]">
-      <nav className="grid grid-cols-3 p-6 items-center">
+      <nav className="grid grid-cols-3 p-4 items-center">
         <div>
           <LogoImage />
         </div>
         <div>
           <HeaderList />
         </div>
-        <div className="">
+        {/* <div className="">
           <input
             type="search"
             className="outline-none text-[14px] p-2 pl-4 w-[80%] rounded-[50px]"
             placeholder="search movies..."
-            onChange={handleQuery}
           />
-        </div>
+        </div> */}
       </nav>
     </header>
   );
@@ -45,18 +37,12 @@ const HeaderList = () => {
         <a href="">Country</a>
       </li>
       <li className="">
-        <a
-          className="text-white  py-2 px-4 rounded-xl cursor-pointer hover:text-[#001580] hover:bg-white duration-300 border border-none hover:border-solid"
-          href=""
-        >
+        <a className="" href="">
           Sign Up
         </a>
       </li>
       <li className="">
-        <a
-          className="text-white py-2 px-4 rounded-xl cursor-pointer hover:text-[#001580] hover:bg-white duration-300 border border-none hover:border-solid"
-          href=""
-        >
+        <a className="" href="">
           Login
         </a>
       </li>
