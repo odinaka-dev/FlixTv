@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { searchContext } from "../contexts/Search";
 
 const AllMovies = () => {
+  const { searchQuery } = useContext(searchContext);
+
+  // const filterMovies =
+
   return (
     <section className="mb-36 relative top-[100px] max-w-[90%] mx-auto text-white">
       {/* <h1 className="recently_header">All movies</h1> */}

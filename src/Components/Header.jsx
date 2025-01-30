@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
 import LogoImage from "./Logo";
-import { searchContext } from "../contexts/Search";
+// import { searchContext } from "../contexts/Search";
 
 const Header = () => {
   // Using react context
-  const { setSearchQuery } = useContext(searchContext);
+  // const { setSearchQuery } = useContext(searchContext);
+
+  const handleQuery = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <header className="binge_header fixed w-full z-[100]">
@@ -20,6 +24,7 @@ const Header = () => {
             type="search"
             className="outline-none text-[14px] p-2 pl-4 w-[80%] rounded-[50px]"
             placeholder="search movies..."
+            onChange={handleQuery}
           />
         </div>
       </nav>

@@ -1,4 +1,4 @@
-import React, { Children, createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // create the context
 
@@ -9,7 +9,7 @@ export const SearchProvider = ({ Children }) => {
 
   return (
     <searchContext.Provider value={{ searchQuery, setSearchQuery }}>
-      {[Children]}
+      {Children}
     </searchContext.Provider>
   );
 };
