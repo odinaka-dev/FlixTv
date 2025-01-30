@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import LogoImage from "./Logo";
+import { searchContext } from "../contexts/Search";
+
 const Header = () => {
+  // Using react context
+  const { setSearchQuery } = useContext(searchContext);
+
   return (
     <header className="binge_header fixed w-full z-[100]">
       <nav className="grid grid-cols-3 p-6 items-center">
@@ -21,17 +26,6 @@ const Header = () => {
     </header>
   );
 };
-
-// const LogoImage = () => {
-//   return (
-//     <section className="cursor-pointer">
-//       <div className="logo text-white flex gap-2">
-//         <img className="w-[8%] cursor-pointer" src={Logo} alt="logo-img" />
-//         <p className="font-bold text-[28px]">BingeBox</p>
-//       </div>
-//     </section>
-//   );
-// };
 
 const HeaderList = () => {
   return (
