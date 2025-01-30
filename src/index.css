@@ -21,7 +21,7 @@ a {
   color: white;
 }
 .binge_header {
-  background-color: rgb(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.66);
 }
 .home_banner {
   background: rgb(0, 0, 0, 0.7) url("./assets/Rectangle.png");

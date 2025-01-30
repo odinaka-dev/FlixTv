@@ -9,7 +9,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/SignUp.jsx";
 import Error from "./pages/Error.jsx";
 import Movies from "./pages/Movie.jsx";
-
+import AllMovies from "./pages/AllMovies.jsx";
 // the react router
 const route = createBrowserRouter([
   {
@@ -21,6 +21,7 @@ const route = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       { path: "movies/:id", element: <Movies /> },
+      { path: "movies", element: <AllMovies /> },
     ],
   },
 ]);
