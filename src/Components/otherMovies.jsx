@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const OtherMovies = () => {
   return (
@@ -11,6 +12,9 @@ const OtherMovies = () => {
 };
 
 const OtherMoviesComponents = () => {
+  // navigate declaration
+  const navigate = useNavigate();
+
   // fetch the necessary data
   const [series, setSeries] = useState([]);
 
@@ -49,7 +53,10 @@ const OtherMoviesComponents = () => {
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Newly Released Series on BingeBox
         </h1>
-        <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
+        <div
+          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          onClick={() => navigate("/movies")}
+        >
           <button className="text-[14px]">View all</button>
           <FaArrowRight />
         </div>
@@ -80,6 +87,7 @@ const OtherMoviesComponents = () => {
 };
 
 const OtherSeriesComponents = () => {
+  const navigate = useNavigate();
   // the fetch request for Top movies watched on bingebox
   const [Top, setTop] = useState([]);
 
@@ -118,7 +126,10 @@ const OtherSeriesComponents = () => {
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Top Rated Movies on BingeBox
         </h1>
-        <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
+        <div
+          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          onClick={() => navigate("/movies")}
+        >
           <button className="text-[14px]">View all</button>
           <FaArrowRight />
         </div>

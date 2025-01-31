@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
+import Load from "../Components/Load";
 
 const AllMovies = () => {
   // const { searchQuery } = useContext(searchContext);
@@ -166,7 +167,8 @@ const HandleTrendFetchRequest = () => {
             </div>
           ))
         ) : (
-          <p>No movies found for "{searchQuery}"</p>
+          // <p>No movies found for "{searchQuery}"</p>
+          <Load />
         )}
       </div>
     </section>

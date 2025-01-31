@@ -37,7 +37,9 @@ const LogIn = () => {
       <div className="login_2">
         <div className="text-black flex items-center justify-center gap-2 bg-blue-100 p-2 rounded-lg">
           <FcGoogle className="text-xl" />
-          <button className="">Google</button>
+          <button className="text-[12px]">
+            Login with your Google account
+          </button>
         </div>
         <p className="text-[11px] text-white mt-2">
           New to BingeBox? <b>Sign Up now</b>

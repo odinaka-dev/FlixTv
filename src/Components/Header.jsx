@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import LogoImage from "./Logo";
+import { useNavigate } from "react-router-dom";
 // import { searchContext } from "../contexts/Search";
 
 const Header = () => {
@@ -25,23 +26,25 @@ const Header = () => {
 };
 
 const HeaderList = () => {
+  const navigate = useNavigate();
+
   return (
     <ul className="nav-items flex items-center gap-6 cursor-pointer text-[14px]">
-      <li className="">
-        <a href="">Genre</a>
+      <li className="" onClick={() => navigate("/")}>
+        <a href="">Home</a>
       </li>
-      <li className="">
+      <li className="" onClick={() => navigate("/movies")}>
         <a href="">Movies</a>
       </li>
-      <li className="">
+      <li className="" onClick={() => navigate("/movies")}>
         <a href="">Country</a>
       </li>
-      <li className="">
+      <li className="" onClick={() => navigate("/signup")}>
         <a className="" href="">
           Sign Up
         </a>
       </li>
-      <li className="">
+      <li className="" onClick={() => navigate("login")}>
         <a className="" href="">
           Login
         </a>

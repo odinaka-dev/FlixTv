@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // the icons for the rating
 import { FaArrowRight, FaStar } from "react-icons/fa6";
@@ -13,6 +13,9 @@ const TrendingVideos = () => {
 };
 
 const HandleTrendFetchRequest = () => {
+  // navigate declaration
+  const navigate = useNavigate();
+
   const [Trend, setTrending] = useState([]);
   const [Genre, setGenre] = useState([]);
 
@@ -82,7 +85,10 @@ const HandleTrendFetchRequest = () => {
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Thrilling Movies on BingeBox
         </h1>
-        <div className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize">
+        <div
+          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          onClick={() => navigate("/movies")}
+        >
           <button className="text-[14px]">View all</button>
           <FaArrowRight />
         </div>

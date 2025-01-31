@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Recently = () => {
   return (
@@ -9,6 +10,7 @@ const Recently = () => {
 };
 
 const MainContents = () => {
+
   // fetch request - using RapidAPI
   const [recently, setRecently] = useState([]);
   const [genre, setGenre] = useState([]);
