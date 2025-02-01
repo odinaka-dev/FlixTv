@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   return (
-    <div className="h-[100vh] max-w-[25%] mx-auto flex justify-center items-center">
+    <div className="h-[100vh] max-w-[100%] lg:max-w-[25%] mx-auto flex flex-col justify-center items-center">
       <LogIn />
     </div>
   );

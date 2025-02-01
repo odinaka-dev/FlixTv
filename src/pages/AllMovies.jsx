@@ -9,7 +9,7 @@ const AllMovies = () => {
   // const { searchQuery } = useContext(searchContext);
 
   return (
-    <section className="mb-36 relative top-[100px] max-w-[90%] mx-auto text-white">
+    <section className="mb-36 relative top-[50px] sm:top-[100px] max-w-[90%] mx-auto text-white">
       {/* <h1 className="recently_header">All movies</h1> */}
       <HandleTrendFetchRequest />
     </section>
