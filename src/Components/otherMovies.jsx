@@ -56,12 +56,12 @@ const OtherMoviesComponents = () => {
   const updateItemsPerPage = () => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth <= 760) {
+    if (screenWidth <= 420) {
+      setItemsPerPage(1);
+    } else if (screenWidth <= 760) {
       setItemsPerPage(2);
     } else if (screenWidth <= 1024) {
-      setItemsPerPage(3);
-    } else if (screenWidth <= 420) {
-      setItemsPerPage(1);
+      setItemsPerPage(4);
     } else {
       setItemsPerPage(5);
     }
@@ -96,7 +96,7 @@ const OtherMoviesComponents = () => {
       <div className="relative">
         <div>
           <motion.div
-            className="series_movies grid grid-cols-2 sm:grid-cols-5 gap-8 my-10"
+            className="series_movies grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 my-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -192,7 +192,7 @@ const OtherSeriesComponents = () => {
           <FaArrowRight />
         </div>
       </div>
-      <div className="series_movies grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-8 my-10">
+      <div className="series_movies grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-8 my-10">
         {Top.map((results) => (
           <div className="relative w-[90%]" key={results.id}>
             <div className="image_poster">
@@ -218,17 +218,17 @@ const OtherSeriesComponents = () => {
 };
 
 // the buttono functionalty
-const SliderButton = ({ nextSlide }) => {
-  return (
-    <section className="">
-      <div className="">
-        <GrLinkNext
-          onClick={nextSlide}
-          className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
-        />
-      </div>
-    </section>
-  );
-};
+// const SliderButton = ({ nextSlide }) => {
+//   return (
+//     <section className="">
+//       <div className="">
+//         <GrLinkNext
+//           onClick={nextSlide}
+//           className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
+//         />
+//       </div>
+//     </section>
+//   );
+// };
 
 export default OtherMovies;

@@ -105,27 +105,27 @@ const HandleTrendFetchRequest = () => {
 
   return (
     <section className="py-8 pb-2">
-      <div className="recently_header grid grid-cols-[25%_60%_10%] gap-8 items-center">
-        <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
+      <div className="recently_header grid lg:grid-cols-[25%_60%_10%] gap-8 items-center">
+        <h1 className="recently_header text-center sm:text-left text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Thrilling Movies on BingeBox
         </h1>
         <div className="flex justify-center">
           <input
             type="search"
-            className="outline-none text-black text-[14px] p-2 pl-4 w-[80%] rounded-[50px] cursor-pointer"
+            className="outline-none text-white bg-[#2b2b2b] text-[14px] p-2 pl-4 w-[80%] rounded-[50px] cursor-pointer"
             placeholder="search movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="pagination">
+        <div className="pagination flex justify-center">
           <PaginationButton
             handleNext={handleNext}
             handlePrevious={handlePrevious}
           />
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-8 my-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-8">
         {filteredMovies.length > 0 ? (
           filteredMovies.map((result) => (
             <div key={result.id}>

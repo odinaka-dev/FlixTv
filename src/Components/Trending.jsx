@@ -86,7 +86,7 @@ const HandleTrendFetchRequest = () => {
           Thrilling Movies on BingeBox
         </h1>
         <div
-          className="recently_button w-[50%] sm:w-[100%] sm:block bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button  bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
           <button className="text-[14px]">View all</button>
