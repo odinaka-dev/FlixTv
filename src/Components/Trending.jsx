@@ -81,19 +81,19 @@ const HandleTrendFetchRequest = () => {
 
   return (
     <section className="py-8 pb-2">
-      <div className="recently_header flex items-center justify-between">
+      <div className="recently_header flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 justify-between">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Thrilling Movies on BingeBox
         </h1>
         <div
-          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button w-[50%] sm:w-[100%] sm:block bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
           <button className="text-[14px]">View all</button>
           <FaArrowRight />
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-8 my-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 my-8">
         {Trend.map((result) => (
           <div className="" key={result.id}>
             <div className="movie_images full">

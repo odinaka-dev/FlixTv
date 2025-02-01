@@ -9,7 +9,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const FooterComponent = () => {
   return (
-    <footer className="text-white bg-blue-900 pb-8">
+    <footer className="hidden text-white bg-blue-900 pb-8">
       <div className="max-w-[90%] mx-auto">
         <FooterCard />
         <MainComponent />

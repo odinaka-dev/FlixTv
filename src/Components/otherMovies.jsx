@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { GrLinkNext } from "react-icons/gr";
 
 const OtherMovies = () => {
   return (
@@ -15,9 +17,12 @@ const OtherMoviesComponents = () => {
   // navigate declaration
   const navigate = useNavigate();
 
-  // fetch the necessary data
+  //state values
   const [series, setSeries] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
+  // fetch the necessary data
   useEffect(() => {
     const fetchSeries = async () => {
       try {
@@ -33,9 +38,9 @@ const OtherMoviesComponents = () => {
           }
         );
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
         if (data.results) {
-          setSeries(data.results.slice(5, 10));
+          setSeries(data.results);
         } else {
           setSeries([]);
         }
@@ -46,6 +51,33 @@ const OtherMoviesComponents = () => {
 
     fetchSeries();
   }, []);
+
+  // updating the itemsperpage
+  const updateItemsPerPage = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 760) {
+      setItemsPerPage(2);
+    } else if (screenWidth <= 1024) {
+      setItemsPerPage(3);
+    } else if (screenWidth <= 420) {
+      setItemsPerPage(1);
+    } else {
+      setItemsPerPage(5);
+    }
+  };
+
+  useEffect(() => {
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
+
+  const totalPages = Math.ceil(series.length / itemsPerPage);
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1 < totalPages ? prev + 1 : 0)); // Loop back to start if at the last page
+  };
 
   return (
     <section className="mb-4">
@@ -61,26 +93,52 @@ const OtherMoviesComponents = () => {
           <FaArrowRight />
         </div>
       </div>
-      <div className="series_movies grid grid-cols-5 gap-8 my-10">
-        {series.map((results) => (
-          <div className="relative w-[90%]" key={results.id}>
-            <div className="image_poster">
-              <img
-                className="rounded-lg"
-                src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
-                alt=""
-              />
-            </div>
-            <div className="series_info flex flex-col gap-2">
-              <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
-                {results.name}
-              </p>
-              <p className="absolute top-0 text-[10px] bg-blue-900 cursor-pointer inline-block p-2 rounded-lg">
-                {results.first_air_date}
-              </p>
-            </div>
+      <div className="relative">
+        <div>
+          <motion.div
+            className="series_movies grid grid-cols-2 sm:grid-cols-5 gap-8 my-10"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            drag="x"
+          >
+            {series
+              .slice(index * itemsPerPage, (index + 1) * itemsPerPage)
+              .map((results, i) => (
+                <motion.div
+                  className="relative w-[90%]"
+                  key={results.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <div className="image_poster">
+                    <img
+                      className="rounded-lg"
+                      src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                      alt=""
+                    />
+                  </div>
+                  <div className="series_info flex flex-col gap-2">
+                    <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
+                      {results.name}
+                    </p>
+                    <p className="absolute top-0 text-[10px] bg-blue-900 cursor-pointer inline-block p-2 rounded-lg">
+                      {results.first_air_date}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+          </motion.div>
+        </div>
+        <div className="absolute top-[50%] right-0">
+          <div className="">
+            <GrLinkNext
+              onClick={nextSlide}
+              className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
+            />
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
@@ -134,7 +192,7 @@ const OtherSeriesComponents = () => {
           <FaArrowRight />
         </div>
       </div>
-      <div className="series_movies grid grid-cols-5 gap-8 my-10">
+      <div className="series_movies grid grid-cols-2 lg:grid-cols-5 gap-2 md:gap-8 my-10">
         {Top.map((results) => (
           <div className="relative w-[90%]" key={results.id}>
             <div className="image_poster">
@@ -154,6 +212,20 @@ const OtherSeriesComponents = () => {
             </div>
           </div>
         ))}
+      </div>
+    </section>
+  );
+};
+
+// the buttono functionalty
+const SliderButton = ({ nextSlide }) => {
+  return (
+    <section className="">
+      <div className="">
+        <GrLinkNext
+          onClick={nextSlide}
+          className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
+        />
       </div>
     </section>
   );

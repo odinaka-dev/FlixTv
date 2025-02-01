@@ -29,7 +29,7 @@ const HeaderList = () => {
   const navigate = useNavigate();
 
   return (
-    <ul className="nav-items flex items-center gap-6 cursor-pointer text-[14px]">
+    <ul className="nav-items hidden sm:flex items-center gap-6 cursor-pointer text-[14px]">
       <li className="" onClick={() => navigate("/")}>
         <a href="">Home</a>
       </li>

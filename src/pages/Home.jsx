@@ -21,7 +21,7 @@ const HomePage = () => {
 // HOME BANNER WILL BE PROPS
 const HomeBanner = () => {
   return (
-    <section className="home_banner pt-[200px] pb-[80px] flex flex-row justify-between items-center">
+    <section className="home_banner py-[100px] lg:pt-[200px] lg:pb-[80px] flex flex-row justify-between items-center">
       <MiniBanner />
     </section>
   );
@@ -31,7 +31,7 @@ const MiniBanner = () => {
   return (
     <section className="">
       <div className="max-w-[90%] mx-auto text-white text-[16px] font-bold">
-        <div className="banner_btn flex items-center gap-8">
+        <div className="banner_btn flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8">
           <div className="watch_now bg-[blue] p-4 rounded-lg flex items-center gap-3 hover:bg-blue-700 hover:text-[20px] duration-300">
             <button>Watch Now</button>
             <FaCirclePlay className="text-white" />
@@ -52,8 +52,10 @@ const InfoSection = () => {
   return (
     <section className="max-w-[90%] mx-auto text-white mt-8">
       <div className="flex flex-col gap-2 mb-4">
-        <h1 className="text-4xl font-bold">Avatar: The way of Water</h1>
-        <div className="categories_info flex gap-4 items-center font-bold cursor-pointer">
+        <h1 className="text-2xl lg:text-4xl font-bold">
+          Avatar: The way of Water
+        </h1>
+        <div className="categories_info flex flex-wrap gap-4 items-center font-bold cursor-pointer">
           <p className="bg-white p-2 rounded-[50px] text-[14px] text-black">
             Action
           </p>
@@ -77,7 +79,7 @@ const InfoSection = () => {
           </div>
         </div>
       </div>
-      <div className="content w-[50%]">
+      <div className="content lg:w-[50%]">
         <p className="font-medium text-[14px] leading-6">
           Set more than a decade after the events of the first film, learn the
           story of the sully family jake, Neytiri, and their kids, the trouble

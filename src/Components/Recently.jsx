@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Recently = () => {
   return (
@@ -10,10 +11,11 @@ const Recently = () => {
 };
 
 const MainContents = () => {
-
   // fetch request - using RapidAPI
   const [recently, setRecently] = useState([]);
   const [genre, setGenre] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,44 +74,81 @@ const MainContents = () => {
     genreFetch();
   }, []);
 
+  // the function for the slide effect
+  const updateItemsPerPage = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 400) {
+      setItemsPerPage(1);
+    } else if (screenWidth <= 760) {
+      setItemsPerPage(2);
+    } else if (screenWidth <= 1024) {
+      setItemsPerPage(3);
+    } else {
+      setItemsPerPage(4);
+    }
+  };
+
+  useEffect(() => {
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
+
+  const totalPages = Math.ceil(recently.length / itemsPerPage);
+
   return (
     <section className="">
       <div className="">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] inline-block pb-2">
           Most watched Movies on Bingebox
         </h1>
-        <section className="grid grid-cols-4 gap-8 items-center my-4">
-          {recently.map((results) => (
-            <div className="flex gap-2 items-center text-sm" key={results.id}>
-              <div className="image_poster w-[40%]">
-                <img
-                  className="rounded-lg"
-                  src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
-                  alt=""
-                />
-              </div>
-              <div className="recents_info">
-                <p>{results.original_title}</p>
-                <div className="flex flex-wrap gap-2">
-                  {results.genre_ids.slice(0, 2).map((genreId) => {
-                    // Find the genre name for this genreId
-                    const matchingGenre = genre.find((g) => g.id === genreId);
-                    return (
-                      matchingGenre && (
-                        <span
-                          className="cursor-pointer bg-white text-black font-bold p-2 py-2 text-center rounded-[50px] my-2 cursor-pointer text-[9px]"
-                          key={genreId}
-                        >
-                          {matchingGenre.name}
-                        </span>
-                      )
-                    );
-                  })}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center my-4"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          drag="x"
+        >
+          {recently
+            .slice(index * itemsPerPage, (index + 1) * itemsPerPage)
+            .map((results, i) => (
+              <motion.div
+                className="flex gap-2 items-center text-sm"
+                key={results.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="image_poster w-[40%]">
+                  <img
+                    className="rounded-lg"
+                    src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                    alt=""
+                  />
                 </div>
-              </div>
-            </div>
-          ))}
-        </section>
+                <div className="recents_info">
+                  <p>{results.original_title}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {results.genre_ids.slice(0, 2).map((genreId) => {
+                      // Find the genre name for this genreId
+                      const matchingGenre = genre.find((g) => g.id === genreId);
+                      return (
+                        matchingGenre && (
+                          <span
+                            className="cursor-pointer bg-white text-black font-bold p-2 py-2 text-center rounded-[50px] my-2 cursor-pointer text-[9px]"
+                            key={genreId}
+                          >
+                            {matchingGenre.name}
+                          </span>
+                        )
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+        </motion.div>
       </div>
     </section>
   );

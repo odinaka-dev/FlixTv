@@ -24,9 +24,10 @@ a {
   background-color: rgba(0, 0, 0, 0.66);
 }
 .home_banner {
-  background: rgb(0, 0, 0, 0.7) url("./assets/Rectangle.png");
+  background: linear-gradient(to bottom, transparent, #191919),
+    url("./assets/Rectangle.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: top;
   background-blend-mode: darken;
 }
@@ -46,4 +47,5 @@ a {
   background-size: contain;
   background-position: right;
 }
-/* the About intro section */
+
+/* ####### Responsive UI ###### */
