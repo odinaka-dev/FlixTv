@@ -35,7 +35,7 @@ const MainContents = () => {
         // console.log(data);
         // const FirstTenItems = data.result.slice(0, 5);
         if (data.results) {
-          setRecently(data.results.slice(0, 4));
+          setRecently(data.results);
         } else {
           setRecently([]);
         }
