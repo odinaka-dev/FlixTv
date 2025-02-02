@@ -78,7 +78,7 @@ const MainContents = () => {
   const updateItemsPerPage = () => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth <= 400) {
+    if (screenWidth <= 450) {
       setItemsPerPage(1);
     } else if (screenWidth <= 760) {
       setItemsPerPage(2);
@@ -108,7 +108,7 @@ const MainContents = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          drag="x"
+          // drag="x"
         >
           {recently
             .slice(index * itemsPerPage, (index + 1) * itemsPerPage)
@@ -150,6 +150,14 @@ const MainContents = () => {
             ))}
         </motion.div>
       </div>
+    </section>
+  );
+};
+
+const NextSlideButton = ({ handleNext }) => {
+  return (
+    <section className="">
+      <h1>Welcome</h1>
     </section>
   );
 };
