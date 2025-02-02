@@ -57,7 +57,9 @@ const OtherMoviesComponents = () => {
     const screenWidth = window.innerWidth;
 
     if (screenWidth <= 420) {
-      setItemsPerPage(1);
+      setItemsPerPage(2);
+    } else if (screenWidth <= 640) {
+      setItemsPerPage(2);
     } else if (screenWidth <= 760) {
       setItemsPerPage(2);
     } else if (screenWidth <= 1024) {
@@ -81,15 +83,17 @@ const OtherMoviesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header flex items-center justify-between">
+      <div className="recently_header grid grid-cols-2 sm:flex items-center justify-between gap-2">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Newly Released Series on BingeBox
         </h1>
         <div
-          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
-          <button className="text-[14px]">View all</button>
+          <button className="text-[14px] bg-[#2e2e2e] p-2 px-6">
+            View all
+          </button>
           <FaArrowRight />
         </div>
       </div>
@@ -180,15 +184,17 @@ const OtherSeriesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header flex items-center justify-between">
+      <div className="recently_header grid grid-cols-2 sm:flex items-center justify-between gap-2">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
           Top Rated Movies on BingeBox
         </h1>
         <div
-          className="recently_button bg-[#2e2e2e] p-2 px-8 flex items-center gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
-          <button className="text-[14px]">View all</button>
+          <button className="text-[14px] bg-[#2e2e2e] p-2 px-6">
+            View all
+          </button>
           <FaArrowRight />
         </div>
       </div>
