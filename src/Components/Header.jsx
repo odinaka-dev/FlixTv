@@ -52,26 +52,56 @@ const HeaderList = ({ isOpen, setIsOpen }) => {
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="hidden sm:flex flex-row items-center gap-6 cursor-pointer text-[14px] text-white"
       >
-        {["Home", "Movies", "Country", "Sign Up", "Login"].map(
-          (item, index) => (
-            <motion.li
-              key={index}
-              onClick={() =>
-                navigate(
-                  item === "Sign Up"
-                    ? "/signup"
-                    : item === "Login"
-                    ? "/login"
-                    : `/${item.toLowerCase()}`
-                )
-              }
-              whileHover={{ scale: 1.1, color: "#facc15" }}
-              className="transition duration-300"
-            >
-              {item}
-            </motion.li>
-          )
-        )}
+        <motion.li
+          onClick={() => {
+            navigate("/");
+            setIsOpen(false);
+          }}
+          whileHover={{ scale: 1.1, color: "#facc15" }}
+          className="cursor-pointer"
+        >
+          Home
+        </motion.li>
+        <motion.li
+          onClick={() => {
+            navigate("/movies");
+            setIsOpen(false);
+          }}
+          whileHover={{ scale: 1.1, color: "#facc15" }}
+          className="cursor-pointer"
+        >
+          Movies
+        </motion.li>
+        <motion.li
+          onClick={() => {
+            navigate("/");
+            setIsOpen(false);
+          }}
+          whileHover={{ scale: 1.1, color: "#facc15" }}
+          className="cursor-pointer"
+        >
+          Country
+        </motion.li>
+        <motion.li
+          onClick={() => {
+            navigate("/login");
+            setIsOpen(false);
+          }}
+          whileHover={{ scale: 1.1, color: "#facc15" }}
+          className="cursor-pointer"
+        >
+          Login
+        </motion.li>
+        <motion.li
+          onClick={() => {
+            navigate("/signup");
+            setIsOpen(false);
+          }}
+          whileHover={{ scale: 1.1, color: "#facc15" }}
+          className="cursor-pointer"
+        >
+          Sign Up
+        </motion.li>
       </motion.ul>
 
       {/* Mobile Menu */}
@@ -88,27 +118,56 @@ const HeaderList = ({ isOpen, setIsOpen }) => {
 
         {/* Mobile Nav Items */}
         <ul className="flex flex-col mt-10 space-y-6 text-white text-lg">
-          {["Home", "Movies", "Country", "Sign Up", "Login"].map(
-            (item, index) => (
-              <motion.li
-                key={index}
-                onClick={() => {
-                  navigate(
-                    item === "Sign Up"
-                      ? "/signup"
-                      : item === "Login"
-                      ? "/login"
-                      : `/${item.toLowerCase()}`
-                  );
-                  setIsOpen(false);
-                }}
-                whileHover={{ scale: 1.1, color: "#facc15" }}
-                className="cursor-pointer"
-              >
-                {item}
-              </motion.li>
-            )
-          )}
+          <motion.li
+            onClick={() => {
+              navigate("/");
+              setIsOpen(false);
+            }}
+            whileHover={{ scale: 1.1, color: "#facc15" }}
+            className="cursor-pointer"
+          >
+            Home
+          </motion.li>
+          <motion.li
+            onClick={() => {
+              navigate("/movies");
+              setIsOpen(false);
+            }}
+            whileHover={{ scale: 1.1, color: "#facc15" }}
+            className="cursor-pointer"
+          >
+            Movies
+          </motion.li>
+          <motion.li
+            onClick={() => {
+              navigate("/");
+              setIsOpen(false);
+            }}
+            whileHover={{ scale: 1.1, color: "#facc15" }}
+            className="cursor-pointer"
+          >
+            Country
+          </motion.li>
+          <motion.li
+            onClick={() => {
+              navigate("/login");
+              setIsOpen(false);
+            }}
+            whileHover={{ scale: 1.1, color: "#facc15" }}
+            className="cursor-pointer"
+          >
+            Login
+          </motion.li>
+          <motion.li
+            onClick={() => {
+              navigate("/signup");
+              setIsOpen(false);
+            }}
+            whileHover={{ scale: 1.1, color: "#facc15" }}
+            className="cursor-pointer"
+          >
+            Sign Up
+          </motion.li>
         </ul>
       </motion.div>
     </>
