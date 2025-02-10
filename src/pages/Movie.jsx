@@ -54,7 +54,7 @@ const MoviePage = () => {
           key={movie.id}
         >
           <div className="relative">
-            <div className="play absolute top-[30%] left-[40%] md:left-[45%] md:top-[40%]">
+            <div className="play absolute top-[50%] left-[45%] md:left-[45%] md:top-[40%]">
               <FaRegPlayCircle className="text-6xl opacity-60" />
             </div>
             <div className="bg-blue-900 p-2 rounded-[50%] inline-block relative top-[35px] cursor-pointer">
