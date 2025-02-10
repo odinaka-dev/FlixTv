@@ -7,3 +7,5 @@ const MovieProps = () => {
     </section>
   );
 };
+
+export default MovieProps;

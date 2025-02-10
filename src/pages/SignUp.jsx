@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const SignIn = () => {
   return (
-    <div className="pt-16 h-[100vh] max-w-[100%] mx-auto flex justify-center items-start sm:items-center">
+    <div className="pt-16 h-[100vh] max-w-[100%] mx-auto flex justify-center items-start">
       <Sign />
     </div>
   );
