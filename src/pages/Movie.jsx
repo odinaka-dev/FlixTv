@@ -12,7 +12,9 @@ import { FaCirclePlay } from "react-icons/fa6";
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
+  const [video, setVideo] = useState([]);
 
+  // the fetch for the Imagge
   useEffect(() => {
     const handlePage = async () => {
       try {

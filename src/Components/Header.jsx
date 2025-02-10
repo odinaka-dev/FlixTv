@@ -1,50 +1,117 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import LogoImage from "./Logo";
 import { useNavigate } from "react-router-dom";
-import { RiMenuFill } from "react-icons/ri";
+import { RiMenuFill, RiCloseFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="binge_header fixed w-full z-[100] relative">
+    <header className="binge_header w-full z-[100] bg-black shadow-md">
       <nav className="flex flex-row justify-between p-4 items-center">
         <div className="">
           <LogoImage />
         </div>
-        <div className="flex justify-between items-center gap-2">
-          <RiMenuFill className=" sm:hidden text-white text-3xl cursor-pointer" />
-          <HeaderList />
+
+        {/* Mobile Menu Icon */}
+        <div className="flex items-center gap-4">
+          <RiMenuFill
+            className="sm:hidden text-white text-3xl cursor-pointer"
+            onClick={() => setIsOpen(true)}
+          />
         </div>
+
+        {/* Animated Navigation Menu */}
+        <HeaderList isOpen={isOpen} setIsOpen={setIsOpen} />
       </nav>
     </header>
   );
 };
 
-const HeaderList = () => {
+const HeaderList = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
 
   return (
-    <ul className="hidden nav-items sm:flex flex-col absolute left-0 top-[82px] bg-[#2b2b2b] p-4 px-24 sm:p-0 sm:bg-transparent h-[100vh] sm:h-[0vh] sm:top-[0px] sm:right-[0px] sm:left-[0px] sm:bottom-[0px] sm:static sm:flex-row items-center gap-6 cursor-pointer text-[14px]">
-      <li className="" onClick={() => navigate("/")}>
-        <a href="">Home</a>
-      </li>
-      <li className="" onClick={() => navigate("/movies")}>
-        <a href="">Movies</a>
-      </li>
-      <li className="" onClick={() => navigate("/movies")}>
-        <a href="">Country</a>
-      </li>
-      <li className="" onClick={() => navigate("/signup")}>
-        <a className="" href="">
-          Sign Up
-        </a>
-      </li>
-      <li className="" onClick={() => navigate("login")}>
-        <a className="" href="">
-          Login
-        </a>
-      </li>
-    </ul>
+    <>
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Navigation List */}
+      <motion.ul
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="hidden sm:flex flex-row items-center gap-6 cursor-pointer text-[14px] text-white"
+      >
+        {["Home", "Movies", "Country", "Sign Up", "Login"].map(
+          (item, index) => (
+            <motion.li
+              key={index}
+              onClick={() =>
+                navigate(
+                  item === "Sign Up"
+                    ? "/signup"
+                    : item === "Login"
+                    ? "/login"
+                    : `/${item.toLowerCase()}`
+                )
+              }
+              whileHover={{ scale: 1.1, color: "#facc15" }}
+              className="transition duration-300"
+            >
+              {item}
+            </motion.li>
+          )
+        )}
+      </motion.ul>
+
+      {/* Mobile Menu */}
+      <motion.div
+        className={`fixed top-0 left-0 h-full w-[75%] bg-gray-900 p-6 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-500 ease-in-out sm:hidden z-50`}
+      >
+        {/* Close Button */}
+        <RiCloseFill
+          className="text-white text-3xl cursor-pointer absolute top-4 right-4"
+          onClick={() => setIsOpen(false)}
+        />
+
+        {/* Mobile Nav Items */}
+        <ul className="flex flex-col mt-10 space-y-6 text-white text-lg">
+          {["Home", "Movies", "Country", "Sign Up", "Login"].map(
+            (item, index) => (
+              <motion.li
+                key={index}
+                onClick={() => {
+                  navigate(
+                    item === "Sign Up"
+                      ? "/signup"
+                      : item === "Login"
+                      ? "/login"
+                      : `/${item.toLowerCase()}`
+                  );
+                  setIsOpen(false);
+                }}
+                whileHover={{ scale: 1.1, color: "#facc15" }}
+                className="cursor-pointer"
+              >
+                {item}
+              </motion.li>
+            )
+          )}
+        </ul>
+      </motion.div>
+    </>
   );
 };
 
