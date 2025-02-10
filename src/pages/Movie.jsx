@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
 import {
+  MdArrowBack,
   MdOutlineDateRange,
   MdOutlineWatchLater,
   MdStarRate,
 } from "react-icons/md";
 import { IoBookmark } from "react-icons/io5";
 import { FaCirclePlay } from "react-icons/fa6";
+import { IoMdArrowBack } from "react-icons/io";
 
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
-  const [video, setVideo] = useState([]);
 
   // the fetch for the Imagge
   useEffect(() => {
@@ -45,7 +47,7 @@ const MoviePage = () => {
   }, [id]);
 
   return (
-    <div className="text-white my-12">
+    <div className="text-white mb-8">
       <section className="individual_movies max-w-[92%] md:max-w-[80%] mx-auto">
         <div
           className="grid grid-cols-1 md:grid-cols-2 items-center gap-8"
@@ -54,6 +56,11 @@ const MoviePage = () => {
           <div className="relative">
             <div className="play absolute top-[30%] left-[40%] md:left-[45%] md:top-[40%]">
               <FaRegPlayCircle className="text-6xl opacity-60" />
+            </div>
+            <div className="bg-blue-900 p-2 rounded-[50%] inline-block relative top-[35px] cursor-pointer">
+              <Link to={"/movies"}>
+                <MdArrowBack className="text-2xl" />
+              </Link>
             </div>
             <img
               className="rounded-lg"
