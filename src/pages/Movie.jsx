@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
-import { MdDateRange, MdStarRate } from "react-icons/md";
-import { MdOutlineDateRange } from "react-icons/md";
-import { MdOutlineWatchLater } from "react-icons/md";
+import {
+  MdOutlineDateRange,
+  MdOutlineWatchLater,
+  MdStarRate,
+} from "react-icons/md";
+import { IoBookmark } from "react-icons/io5";
+import { FaCirclePlay } from "react-icons/fa6";
 
 const MoviePage = () => {
   const { id } = useParams();
@@ -77,28 +81,51 @@ const MoviePage = () => {
                 <p>No genres available</p>
               )}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-center mt-2">
-              <div className="grid-first flex items-center gap-2">
-                <MdOutlineWatchLater className="text-2xl" />
-                <p>{movie.runtime} minutes</p>
-              </div>
-              <div className="grid-first flex items-center gap-2">
-                <MdStarRate className="text-2xl text-yellow-500" />
-                <p>{Math.floor(movie.vote_average)} star Ratings</p>
-              </div>
-              <div className="grid-first flex items-center gap-2">
-                <MdDateRange className="text-2xl" />
-                <p>{movie.release_date}</p>
-              </div>
-            </div>
+            <MovieInfoComponent
+              runtime={movie.runtime}
+              Rate={movie.vote_average}
+              DateRelease={movie.release_date}
+            />
+            <ButtonComponent />
           </div>
         </div>
-        <div className="other_info"></div>
       </section>
     </div>
   );
 };
 
+const MovieInfoComponent = ({ runtime, Rate, DateRelease }) => {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-center mt-2">
+      <div className="grid-first flex items-center gap-2">
+        <MdOutlineWatchLater className="text-2xl" />
+        <p>{runtime} minutes</p>
+      </div>
+      <div className="grid-first flex items-center gap-2">
+        <MdStarRate className="text-2xl text-yellow-500" />
+        <p>{Math.floor(Rate)} star Ratings</p>
+      </div>
+      <div className="grid-first flex items-center gap-2">
+        <MdOutlineDateRange className="text-2xl" />
+        <p>{DateRelease}</p>
+      </div>
+    </div>
+  );
+};
+
+const ButtonComponent = () => {
+  return (
+    <div className="butttons grid grid-cols-[75%_20%] md:grid-cols-[80%_20%] items-center gap-2 w-full mt-4">
+      <div className="watch_now bg-[blue] p-4 rounded-lg flex justify-center items-center gap-3 hover:bg-blue-700 hover:text-[20px] duration-300">
+        <button>Watch Now</button>
+        <FaCirclePlay className="text-white" />
+      </div>
+      <div className="bg-gray-700 flex justify-center p-4 rounded-lg">
+        <IoBookmark className="text-2xl" />
+      </div>
+    </div>
+  );
+};
 // creating the functionality for the filter
 
 export default MoviePage;
