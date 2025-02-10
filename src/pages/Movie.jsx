@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { FaRegPlayCircle } from "react-icons/fa";
+import { MdDateRange, MdStarRate } from "react-icons/md";
+import { MdOutlineDateRange } from "react-icons/md";
+import { MdOutlineWatchLater } from "react-icons/md";
 
 const MoviePage = () => {
   const { id } = useParams();
@@ -21,8 +25,6 @@ const MoviePage = () => {
         );
 
         const data = await response.json();
-        // console.log(data);
-        // console.log(data.original_title);
         if (data) {
           setMovie(data);
         } else {
@@ -43,7 +45,10 @@ const MoviePage = () => {
           className="grid grid-cols-1 md:grid-cols-2 items-center gap-8"
           key={movie.id}
         >
-          <div className="">
+          <div className="relative">
+            <div className="play absolute top-[30%] left-[40%] md:left-[45%] md:top-[40%]">
+              <FaRegPlayCircle className="text-6xl opacity-60" />
+            </div>
             <img
               className="rounded-lg"
               src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
@@ -51,8 +56,8 @@ const MoviePage = () => {
             />
           </div>
           <div className="movie_info">
-            <h1 className="text-white text-2xl font-bold sm:text-3xl lg:text-4xl">
-              {movie.original_title}
+            <h1 className="text-blue-400 text-2xl font-bold sm:text-3xl lg:text-4xl">
+              {movie.title}
             </h1>
             <div className="mt-6">
               <h1 className="text-xl text-[16px] font-bold">Overview</h1>
@@ -60,12 +65,11 @@ const MoviePage = () => {
                 {movie.overview}
               </p>
             </div>
-            <div>
-              {/*  */}
+            <div className="py-4">
               {movie.genres && movie.genres.length > 0 ? (
-                <div className="mt-6 flex flex-col sm:flex-row">
+                <div className="mt-">
                   <span>Genres:</span>
-                  <span className="ml-2 py-2 px-4 bg-white text-black rounded-[50px]">
+                  <span className="ml-2 text-blue-400">
                     {movie.genres.map((genre) => genre.name).join(", ")}
                   </span>
                 </div>
@@ -73,8 +77,23 @@ const MoviePage = () => {
                 <p>No genres available</p>
               )}
             </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-center mt-2">
+              <div className="grid-first flex items-center gap-2">
+                <MdOutlineWatchLater className="text-2xl" />
+                <p>{movie.runtime} minutes</p>
+              </div>
+              <div className="grid-first flex items-center gap-2">
+                <MdStarRate className="text-2xl text-yellow-500" />
+                <p>{Math.floor(movie.vote_average)} star Ratings</p>
+              </div>
+              <div className="grid-first flex items-center gap-2">
+                <MdDateRange className="text-2xl" />
+                <p>{movie.release_date}</p>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="other_info"></div>
       </section>
     </div>
   );
