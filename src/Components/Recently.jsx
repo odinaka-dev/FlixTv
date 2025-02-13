@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { GrLinkNext } from "react-icons/gr";
 
 const Recently = () => {
   return (
@@ -21,7 +22,7 @@ const MainContents = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+          "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=3&sort_by=popularity.desc",
           {
             method: "GET",
             headers: {
@@ -97,6 +98,10 @@ const MainContents = () => {
 
   const totalPages = Math.ceil(recently.length / itemsPerPage);
 
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1 < totalPages ? prev + 1 : 0));
+  };
+
   return (
     <section className="">
       <div className="">
@@ -121,11 +126,13 @@ const MainContents = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="image_poster w-[40%]">
-                  <img
-                    className="rounded-lg"
-                    src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
-                    alt=""
-                  />
+                  <Link to={`movies/${results.id}`}>
+                    <img
+                      className="rounded-lg"
+                      src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                      alt=""
+                    />
+                  </Link>
                 </div>
                 <div className="recents_info">
                   <p>{results.original_title}</p>
@@ -149,17 +156,25 @@ const MainContents = () => {
               </motion.div>
             ))}
         </motion.div>
+        <div className="">
+          <div className="">
+            <GrLinkNext
+              onClick={nextSlide}
+              className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-const NextSlideButton = ({ handleNext }) => {
-  return (
-    <section className="">
-      <h1>Welcome</h1>
-    </section>
-  );
-};
+// const NextSlideButton = ({ handleNext }) => {
+//   return (
+//     <section className="">
+//       <h1>Welcome</h1>
+//     </section>
+//   );
+// };
 
 export default Recently;

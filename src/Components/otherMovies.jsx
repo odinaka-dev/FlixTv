@@ -118,11 +118,13 @@ const OtherMoviesComponents = () => {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   <div className="image_poster">
-                    <img
-                      className="rounded-lg"
-                      src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
-                      alt=""
-                    />
+                    <Link to={`movies/${results.id}`}>
+                      <img
+                        className="rounded-lg"
+                        src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                        alt=""
+                      />
+                    </Link>
                   </div>
                   <div className="series_info flex flex-col gap-2">
                     <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
@@ -203,11 +205,13 @@ const OtherSeriesComponents = () => {
         {Top.map((results) => (
           <div className="relative w-[90%]" key={results.id}>
             <div className="image_poster">
-              <img
-                className="rounded-lg"
-                src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
-                alt=""
-              />
+              <Link to={`movies/${results.id}`}>
+                <img
+                  className="rounded-lg"
+                  src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                  alt=""
+                />
+              </Link>
             </div>
             <div className="series_info flex flex-col gap-2">
               <p className="relative bottom-6 text-[14px] text-white py-4 px-2 bg-blue-900 font-bold">
