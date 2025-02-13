@@ -3,11 +3,11 @@ import { FaRegHourglassHalf } from "react-icons/fa6";
 
 const Load = () => {
   return (
-    <div className="">
-      <div className="flex items-center justify-center text-center">
+    <div className="flex flex-col items-center justify-center text-center mt-8">
+      <div className="my-2">
         <FaRegHourglassHalf className="animate-spin text-3xl" />
       </div>
-      <p className=""></p>
+      <p className="">Fetching data.....</p>
     </div>
   );
 };
