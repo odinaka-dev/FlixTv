@@ -9,7 +9,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const FooterComponent = () => {
   return (
-    <footer className="hidden text-white bg-blue-900 pb-8">
+    <footer className="text-white bg-blue-900 pb-8">
       <div className="max-w-[90%] mx-auto">
         <FooterCard />
         <MainComponent />
@@ -18,9 +18,34 @@ const FooterComponent = () => {
   );
 };
 
+const FooterCard = () => {
+  return (
+    <section className="footer_banner relative bottom-6 p-8 md:p-16 md:px-16 rounded-xl shadow-xl">
+      <div className="information">
+        <h1 className="recently_header capitalize text-white text-2xl md:text-3xl text-center md:text-left">
+          Watch BingeBox today it's Amazing
+        </h1>
+        <p className="text-sm py-2 font-normal text-center md:text-left">
+          Login or create an account, and enjoy unlimited movie updates and
+          information.
+        </p>
+        <div className="button_card flex flex-col sm:flex-row gap-2 text-white text-sm mt-2">
+          <button className="bg-[blue] p-4 px-8 rounded-[50px] cursor-pointer">
+            Latest Movies
+          </button>
+          <button className="bg-blue-900 p-4 px-8 rounded-[50px] cursor-pointer ">
+            <CiLink className="text-[18px] inline" />
+            Search Your Favorite movies
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const MainComponent = () => {
   return (
-    <section className="footer_component grid grid-cols-3 gap-10">
+    <section className="footer_component grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
       <div className="footer_information">
         <LogoImage />
         <p className="mt-2 text-[14px] font-normal leading-6">
@@ -34,7 +59,7 @@ const MainComponent = () => {
       </div>
       <div className="first_info">
         <h2 className="font-bold">Genres</h2>
-        <ol className="flex gap-8 mt-4 pb-8 border-b-[1px]">
+        <ol className="flex flex-wrap gap-8 mt-4 pb-8 border-b-[1px]">
           <li className="bg-white  text-blue-900 p-2 px-6 rounded-[50px] font-bold">
             Action
           </li>
@@ -52,37 +77,12 @@ const MainComponent = () => {
           </li>
         </ol>
         <div className="info">
-          <ol className="socials details flex gap-8 mt-4">
+          <ol className="socials details flex text-2xl sm:text-xl gap-8 mt-4">
             <FaFacebook />
             <FaInstagramSquare />
             <FaLinkedin />
             <FaXTwitter />
           </ol>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const FooterCard = () => {
-  return (
-    <section className="footer_banner relative bottom-6 p-16 px-16 rounded-xl shadow-xl">
-      <div className="information">
-        <h1 className="recently_header capitalize text-white text-3xl">
-          Watch BingeBox today it's Amazing
-        </h1>
-        <p className="text-sm py-2 font-normals">
-          Login or create an account, and enjoy unlimited movie updates and
-          information.
-        </p>
-        <div className="button_card flex gap-2 text-white text-sm mt-2">
-          <button className="bg-[blue] p-4 px-8 rounded-[50px] cursor-pointer">
-            Latest Movies
-          </button>
-          <button className="bg-blue-900 p-2 px-8 rounded-[50px] cursor-pointer flex gap-2 items-center">
-            <CiLink className="text-[18px]" />
-            Search Your Favorite movies
-          </button>
         </div>
       </div>
     </section>

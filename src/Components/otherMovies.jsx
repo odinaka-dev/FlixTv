@@ -101,7 +101,7 @@ const OtherMoviesComponents = () => {
       <div className="relative">
         <div>
           <motion.div
-            className="series_movies grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 my-10"
+            className="series_movies grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 my-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -223,19 +223,5 @@ const OtherSeriesComponents = () => {
     </section>
   );
 };
-
-// the buttono functionalty
-// const SliderButton = ({ nextSlide }) => {
-//   return (
-//     <section className="">
-//       <div className="">
-//         <GrLinkNext
-//           onClick={nextSlide}
-//           className="bg-blue-800 p-2 rounded-[50%] text-4xl cursor-pointer"
-//         />
-//       </div>
-//     </section>
-//   );
-// };
 
 export default OtherMovies;

@@ -2,6 +2,7 @@ import React from "react";
 import Recently from "../Components/Recently";
 import Trending from "../Components/Trending";
 import OtherMovies from "../Components/otherMovies";
+import Footer from "../Components/Footer";
 // the icons from react icons
 import { FaCirclePlay } from "react-icons/fa6";
 import { IoTimeSharp } from "react-icons/io5";
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Recently />
       <Trending />
       <OtherMovies />
+      <Footer />
     </section>
   );
 };

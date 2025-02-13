@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const MovieProps = () => {
+  // useparam and useState()
   const { id } = useParams();
   const [video, setVideo] = useState([]);
 
