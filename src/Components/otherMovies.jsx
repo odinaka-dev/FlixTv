@@ -84,15 +84,15 @@ const OtherMoviesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header grid grid-cols-2 sm:flex items-center justify-between gap-2">
+      <div className="recently_header flex items-center justify-between gap-2">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
-          Newly Released Series on BingeBox
+          New Released Series on BingeBox
         </h1>
         <div
-          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer sm:hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
-          <button className="text-[14px] bg-[#2e2e2e] p-2 px-6">
+          <button className="hidden sm:flex text-[14px] bg-[#2e2e2e] p-2 px-6">
             View all
           </button>
           <FaArrowRight />
@@ -187,15 +187,15 @@ const OtherSeriesComponents = () => {
 
   return (
     <section className="mb-4">
-      <div className="recently_header grid grid-cols-2 sm:flex items-center justify-between gap-2">
+      <div className="recently_header flex items-center justify-between gap-2">
         <h1 className="recently_header text-[18px] border-b-[2px] border-b-[blue] pb-2">
-          Top Rated Movies on BingeBox
+          Top Rated movies on BingeBox
         </h1>
         <div
-          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer hover:bg-[#3e3e3e] duration-300 capitalize"
+          className="recently_button  flex items-center justify-end gap-2 rounded-[50px] cursosr-pointer sm:hover:bg-[#3e3e3e] duration-300 capitalize"
           onClick={() => navigate("/movies")}
         >
-          <button className="text-[14px] bg-[#2e2e2e] p-2 px-6">
+          <button className="hidden sm:flex text-[14px] bg-[#2e2e2e] p-2 px-6">
             View all
           </button>
           <FaArrowRight />
