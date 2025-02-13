@@ -112,7 +112,7 @@ const HandleTrendFetchRequest = () => {
         <div className="flex justify-center">
           <input
             type="search"
-            className="outline-none text-white bg-[#2b2b2b] text-[14px] p-2 pl-4 w-[80%] rounded-[50px] cursor-pointer"
+            className="outline-none text-white bg-[#2b2b2b] text-[14px] p-4 pl-4 w-[100%] sm:w-[80%] rounded-[50px] cursor-pointer"
             placeholder="search movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -125,9 +125,9 @@ const HandleTrendFetchRequest = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-8">
-        {filteredMovies.length > 0 ? (
-          filteredMovies.map((result) => (
+      {filteredMovies.length > 0 ? (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-8">
+          {filteredMovies.map((result) => (
             <div key={result.id}>
               <div className="movie_images full">
                 <Link to={`/movies/${result.id}`}>
@@ -165,12 +165,12 @@ const HandleTrendFetchRequest = () => {
                 </div>
               </div>
             </div>
-          ))
-        ) : (
-          // <p>No movies found for "{searchQuery}"</p>
-          <Load />
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        // <p>No movies found for "{searchQuery}"</p>
+        <Load />
+      )}
     </section>
   );
 };
